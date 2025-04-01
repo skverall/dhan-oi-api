@@ -3,6 +3,11 @@ from oi_cache import get_oi
 import time
 import random
 import math
+import logging
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 tv_bp = Blueprint('tv', __name__)
 
@@ -15,7 +20,9 @@ def get_dynamic_price_change():
     # Используем синусоиду для создания волнообразного движения
     base = math.sin(timestamp / 300) * 1.5  # 5-минутный цикл
     noise = random.uniform(-0.3, 0.3)  # Добавляем случайность
-    return round(base + noise, 2)
+    result = round(base + noise, 2)
+    logger.info(f"Generated price change: {result}")
+    return result
 
 def get_dynamic_oi_change():
     """Генерирует изменение OI с обратной корреляцией к цене"""
@@ -23,20 +30,13 @@ def get_dynamic_oi_change():
     # Противоположная фаза синусоиды
     base = math.sin((timestamp / 300) + math.pi) * 2.0
     noise = random.uniform(-0.5, 0.5)
-    return round(base + noise, 2)
+    result = round(base + noise, 2)
+    logger.info(f"Generated OI change: {result}")
+    return result
 
 def update_historical_oi(symbol, timeframes=None):
-    """
-    Функция для прямого обновления исторических данных OI
-    Может вызываться из cron-скрипта или других частей приложения
+    logger.info(f"Updating data for symbol: {symbol}, timeframes: {timeframes}")
     
-    Args:
-        symbol: Символ тикера для обновления
-        timeframes: Список таймфреймов в минутах (строки или числа)
-    
-    Returns:
-        dict: Словарь с обновленными данными
-    """
     if timeframes is None:
         timeframes = ["15", "45", "75", "120", "240"]
         
@@ -48,6 +48,7 @@ def update_historical_oi(symbol, timeframes=None):
             "base_price": 100,  # Базовая цена
             "timeframes": {}
         }
+        logger.info(f"Initialized new data for symbol: {symbol}")
     
     results = {}
     base_price_change = get_dynamic_price_change()
@@ -72,6 +73,8 @@ def update_historical_oi(symbol, timeframes=None):
             "oi_change": oi_change,
             "rvol": rvol
         }
+        
+        logger.info(f"TF {tf}: Price Change={price_change}, OI Change={oi_change}, Rvol={rvol}")
     
     return {
         "symbol": symbol,
@@ -84,5 +87,9 @@ def tv_data():
     symbol = request.args.get("symbol", "NIFTY")
     timeframes = request.args.get("timeframes", "15,45,75,120,240").split(",")
     
+    logger.info(f"Received request for symbol: {symbol}, timeframes: {timeframes}")
+    
     result = update_historical_oi(symbol, timeframes)
+    logger.info(f"Returning result: {result}")
+    
     return jsonify(result) 
