@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 from oi_cache import get_oi
 from dhan_ws import start_ws
 import os
+from tv_endpoint import tv_bp
 
 app = Flask(__name__)
+app.register_blueprint(tv_bp, url_prefix='')
 
 try:
     start_ws()

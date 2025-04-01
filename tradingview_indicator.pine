@@ -116,14 +116,16 @@ updateOIData() =>
     array.set(tf5_data, 2, 1.1)
     
     // В реальных данных это будет установлено из webhook
-    oiDataAvailable := true
+    // Возвращаем значение, вместо изменения глобальной переменной
+    true
 
 // Проверяем, нужно ли обновить данные
 bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
 
 // Запрос к API только при необходимости обновления
 if shouldUpdate
-    updateOIData()
+    // Обновляем oiDataAvailable с результатом функции
+    oiDataAvailable := updateOIData()
     
     // Обновляем структуры данных
     data1.priceChange := array.get(tf1_data, 0)
