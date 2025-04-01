@@ -1,23 +1,23 @@
 //@version=5
-indicator("F&O OI Changes", overlay=false)
+indicator("F&O OI Changes", overlay=true)
 
-// Настройки индикатора
-var string apiUrl = input.string("https://dhan-oi-api.onrender.com/tv_data", "API URL", group="Настройки")
-// Используем текущий символ графика, но позволяем переопределить его через настройки (если нужно)
-var bool useChartSymbol = input.bool(true, "Использовать символ графика", group="Настройки", tooltip="Если включено, всегда используется текущий символ графика. Если выключено, используется символ ниже.")
-var string customSymbol = input.string("NIFTY", "Символ (если не использовать символ графика)", group="Настройки", tooltip="Используется только если 'Использовать символ графика' выключено")
-var int updateInterval = input.int(60, "Интервал обновления (сек)", minval=10, group="Настройки")
-var bool showErrorLabels = input.bool(true, "Показывать сообщения об ошибках", group="Настройки")
+// Indicator Settings
+var string apiUrl = input.string("https://dhan-oi-api.onrender.com/tv_data", "API URL", group="Settings")
+// Use current chart symbol, but allow overriding it through settings (if needed)
+var bool useChartSymbol = input.bool(true, "Use chart symbol", group="Settings", tooltip="If enabled, current chart symbol is always used. If disabled, the symbol below is used.")
+var string customSymbol = input.string("NIFTY", "Symbol (if not using chart symbol)", group="Settings", tooltip="Used only if 'Use chart symbol' is disabled")
+var int updateInterval = input.int(60, "Update interval (sec)", minval=10, group="Settings")
+var bool showErrorLabels = input.bool(true, "Show error messages", group="Settings")
 
-// Определяем фактически используемый символ
+// Determine the actual symbol to use
 string symbol = useChartSymbol ? syminfo.ticker : customSymbol
 
-// ИНСТРУКЦИЯ ДЛЯ НАСТРОЙКИ WEBHOOK
-// 1. В TradingView Pro перейдите в "Настройки" -> "Webhooks"
-// 2. Создайте webhook с URL: 
+// WEBHOOK SETUP INSTRUCTIONS
+// 1. In TradingView Pro, go to "Settings" -> "Webhooks"
+// 2. Create a webhook with URL: 
 //    https://dhan-oi-api.onrender.com/tv_data?symbol={{ticker}}
 //
-// 3. В ответе с сервера используйте эти маппинги:
+// 3. In the server response, use these mappings:
 //    api_status = $.status
 //    api_error = $.error
 //    oi_15min_change = $.intervals.15min.oi_change_pct
@@ -26,31 +26,31 @@ string symbol = useChartSymbol ? syminfo.ticker : customSymbol
 //    oi_2hours_change = $.intervals.2hours.oi_change_pct
 //    oi_4hours_change = $.intervals.4hours.oi_change_pct
 
-// Структура для хранения данных OI
+// Structure for storing OI data
 type OIData
     float oi
     float change
     color textColor
 
-// Создаем экземпляры данных для разных временных интервалов
+// Create data instances for different time intervals
 var OIData data15min = OIData.new(0.0, 0.0, color.gray)
 var OIData data45min = OIData.new(0.0, 0.0, color.gray)
 var OIData data75min = OIData.new(0.0, 0.0, color.gray)
 var OIData data2hours = OIData.new(0.0, 0.0, color.gray)
 var OIData data4hours = OIData.new(0.0, 0.0, color.gray)
 
-// Переменные для отслеживания ошибок
+// Variables for tracking errors
 var bool hasError = false
 var string errorMessage = ""
 
-// Функция для определения цвета на основе изменения OI
+// Function to determine color based on OI change
 getOIColor(float change) =>
     change > 0 ? color.green : color.red
 
-// Переменные для отслеживания времени последнего обновления
+// Variables for tracking the last update time
 var int lastUpdateTime = 0
 
-// Переменные для данных OI (глобальные)
+// Variables for OI data (global)
 var float current_oi = na
 var float oi_15min_change = na
 var float oi_45min_change = na
@@ -58,17 +58,17 @@ var float oi_75min_change = na
 var float oi_2hours_change = na
 var float oi_4hours_change = na
 
-// Проверяем, нужно ли обновить данные
+// Check if data needs to be updated
 bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
 
-// Запрос к API только при необходимости обновления через webhook
+// Request to API only when update is needed via webhook
 if shouldUpdate
-    // Реальный код работы с webhook в TradingView Pro
-    // URL webhook должен быть:
+    // Real webhook code in TradingView Pro
+    // Webhook URL should be:
     //   https://dhan-oi-api.onrender.com/tv_data?symbol={{ticker}}
-    //   Индикатор автоматически использует тикер текущего графика
+    //   The indicator automatically uses the current chart ticker
     //
-    // Webhook вернет JSON в формате:
+    // Webhook will return JSON in format:
     // {
     //   "symbol": "NIFTY",
     //   "current_oi": 12345,
@@ -83,42 +83,42 @@ if shouldUpdate
     //   "last_update": 1234567890
     // }
     //
-    // Или в случае ошибки:
+    // Or in case of error:
     // {
-    //   "error": "No OI data available for СИМВОЛ", 
-    //   "symbol": "СИМВОЛ",
+    //   "error": "No OI data available for SYMBOL", 
+    //   "symbol": "SYMBOL",
     //   "status": "error",
     //   "error_code": "NO_DATA"
     // }
     
-    // По умолчанию предполагаем, что данные отсутствуют
+    // By default, we assume data is missing
     
-    // В реальном сценарии здесь придут данные с webhook
-    // Данные будут автоматически доступны через переменные после вызова webhook:
-    // oi_15min_change = OI изменение за 15 минут
-    // oi_45min_change = OI изменение за 45 минут
-    // ...и т.д. для всех интервалов
-    // api_status = "success" или "error"
-    // api_error = сообщение об ошибке от API
+    // In real scenario, data will come from webhook
+    // Data will be automatically available through variables after webhook call:
+    // oi_15min_change = OI change over 15 minutes
+    // oi_45min_change = OI change over 45 minutes
+    // ...etc. for all intervals
+    // api_status = "success" or "error"
+    // api_error = error message from API
     
-    // Проверяем, получены ли данные (это примеры переменных из webhook)
-    string api_status = "success"  // Это будет заполнено webhook'ом автоматически
-    string api_error = ""  // Это будет заполнено webhook'ом при ошибке
+    // Check if data was received (these are example variables from webhook)
+    string api_status = "success"  // This will be filled by webhook automatically
+    string api_error = ""  // This will be filled by webhook in case of error
     
     if api_status == "success"
-        // Обновляем данные (эти переменные будут заполнены webhook'ом)
-        current_oi := 12345  // Пример значения, будет заменено реальными данными
-        oi_15min_change := -1.23  // Пример значения, будет заменено реальными данными
-        oi_45min_change := -0.89  // Пример значения, будет заменено реальными данными
-        oi_75min_change := -0.56  // Пример значения, будет заменено реальными данными
-        oi_2hours_change := 0.34  // Пример значения, будет заменено реальными данными
-        oi_4hours_change := -0.12  // Пример значения, будет заменено реальными данными
+        // Update data (these variables will be filled by webhook)
+        current_oi := 12345  // Example value, will be replaced with real data
+        oi_15min_change := -1.23  // Example value, will be replaced with real data
+        oi_45min_change := -0.89  // Example value, will be replaced with real data
+        oi_75min_change := -0.56  // Example value, will be replaced with real data
+        oi_2hours_change := 0.34  // Example value, will be replaced with real data
+        oi_4hours_change := -0.12  // Example value, will be replaced with real data
         
-        // Обновляем данные и цвета
+        // Update data and colors
         hasError := false
         errorMessage := ""
         
-        // Обновляем структуры данных
+        // Update data structures
         data15min.change := oi_15min_change
         data15min.textColor := getOIColor(data15min.change)
         
@@ -134,67 +134,67 @@ if shouldUpdate
         data4hours.change := oi_4hours_change
         data4hours.textColor := getOIColor(data4hours.change)
     else
-        // Ошибка API
+        // API Error
         hasError := true
-        errorMessage := api_error != "" ? api_error : "Ошибка API: Данные недоступны для " + symbol
+        errorMessage := api_error != "" ? api_error : "API Error: Data unavailable for " + symbol
     
-    // Обновляем время последнего обновления
+    // Update last update time
     lastUpdateTime := timenow
 
-// Отрисовка таблицы
+// Draw table
 var table dataTable = table.new(position.top_right, 5, 6, border_width=1)
 
-// Отображение сообщения об ошибке на графике
+// Display error message on chart
 if barstate.islast and hasError and showErrorLabels
     label.new(bar_index, high, text=errorMessage, style=label.style_label_down, color=color.red, textcolor=color.white, size=size.normal)
 
-// Обновляем заголовки таблицы
+// Update table headers
 if barstate.islast
-    table.cell(dataTable, 0, 0, symbol, bgcolor=color.blue, text_color=color.white)  // Показываем выбранный символ
+    table.cell(dataTable, 0, 0, symbol, bgcolor=color.blue, text_color=color.white)  // Show selected symbol
     table.cell(dataTable, 1, 0, "Change in price", bgcolor=color.gray, text_color=color.white)
     table.cell(dataTable, 2, 0, "Change in OI", bgcolor=color.gray, text_color=color.white)
     table.cell(dataTable, 3, 0, "Rvol", bgcolor=color.gray, text_color=color.white)
     table.cell(dataTable, 4, 0, "Relationship", bgcolor=color.gray, text_color=color.white)
     
-    // Если есть ошибка, отображаем сообщение в таблице
+    // If there's an error, display message in the table
     if hasError
         table.cell(dataTable, 0, 1, "ERROR", bgcolor=color.red, text_color=color.white)
         table.cell(dataTable, 1, 1, errorMessage, bgcolor=color.red, text_color=color.white, width=4)
     else
-        // Строка для 15min
+        // Row for 15min
         table.cell(dataTable, 0, 1, "15min", bgcolor=color.gray, text_color=color.white)
         table.cell(dataTable, 1, 1, str.tostring(0.24) + "%", bgcolor=color.black, text_color=color.green)
         table.cell(dataTable, 2, 1, str.tostring(data15min.change) + "%", bgcolor=color.black, text_color=data15min.change > 0 ? color.green : color.red)
         table.cell(dataTable, 3, 1, "0.28", bgcolor=color.black, text_color=color.white)
         table.cell(dataTable, 4, 1, "", bgcolor=data15min.textColor, text_color=color.white)
         
-        // Строка для 45min
+        // Row for 45min
         table.cell(dataTable, 0, 2, "45min", bgcolor=color.gray, text_color=color.white)
         table.cell(dataTable, 1, 2, str.tostring(0.58) + "%", bgcolor=color.black, text_color=color.green)
         table.cell(dataTable, 2, 2, str.tostring(data45min.change) + "%", bgcolor=color.black, text_color=data45min.change > 0 ? color.green : color.red)
         table.cell(dataTable, 3, 2, "0.7", bgcolor=color.black, text_color=color.white)
         table.cell(dataTable, 4, 2, "", bgcolor=data45min.textColor, text_color=color.white)
         
-        // Строка для 75min
+        // Row for 75min
         table.cell(dataTable, 0, 3, "75min", bgcolor=color.gray, text_color=color.white)
         table.cell(dataTable, 1, 3, str.tostring(0.61) + "%", bgcolor=color.black, text_color=color.green)
         table.cell(dataTable, 2, 3, str.tostring(data75min.change) + "%", bgcolor=color.black, text_color=data75min.change > 0 ? color.green : color.red)
         table.cell(dataTable, 3, 3, "0.35", bgcolor=color.black, text_color=color.white)
         table.cell(dataTable, 4, 3, "", bgcolor=data75min.textColor, text_color=color.white)
         
-        // Строка для 2hours
+        // Row for 2hours
         table.cell(dataTable, 0, 4, "2hours", bgcolor=color.gray, text_color=color.white)
         table.cell(dataTable, 1, 4, str.tostring(0.77) + "%", bgcolor=color.black, text_color=color.green)
         table.cell(dataTable, 2, 4, str.tostring(data2hours.change) + "%", bgcolor=color.black, text_color=data2hours.change > 0 ? color.green : color.red)
         table.cell(dataTable, 3, 4, "0.74", bgcolor=color.black, text_color=color.white)
         table.cell(dataTable, 4, 4, "", bgcolor=data2hours.textColor, text_color=color.white)
         
-        // Строка для 4hours
+        // Row for 4hours
         table.cell(dataTable, 0, 5, "4hours", bgcolor=color.gray, text_color=color.white)
         table.cell(dataTable, 1, 5, str.tostring(0.53) + "%", bgcolor=color.black, text_color=color.green)
         table.cell(dataTable, 2, 5, str.tostring(data4hours.change) + "%", bgcolor=color.black, text_color=data4hours.change > 0 ? color.green : color.red)
         table.cell(dataTable, 3, 5, "0.9", bgcolor=color.black, text_color=color.white)
         table.cell(dataTable, 4, 5, "", bgcolor=data4hours.textColor, text_color=color.white)
 
-// Этот индикатор не отображает никаких линий на графике
+// This indicator doesn't display any lines on the chart
 plot(na) 
