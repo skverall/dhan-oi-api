@@ -1,0 +1,106 @@
+//@version=5
+indicator("NIFTY OI Changes", overlay=false)
+
+// Настройки индикатора
+var string apiUrl = input.string("https://dhan-oi-api.onrender.com/tv_data", "API URL", group="Settings")
+var string symbol = input.string("NIFTY", "Symbol", group="Settings")
+var int updateInterval = input.int(60, "Update Interval (sec)", minval=10, group="Settings")
+
+// Структура для хранения данных OI
+type OIData
+    float oi
+    float change
+    string color
+
+// Создаем экземпляры данных для разных временных интервалов
+var OIData data15min = OIData.new(0.0, 0.0, color.gray)
+var OIData data45min = OIData.new(0.0, 0.0, color.gray)
+var OIData data75min = OIData.new(0.0, 0.0, color.gray)
+var OIData data2hours = OIData.new(0.0, 0.0, color.gray)
+var OIData data4hours = OIData.new(0.0, 0.0, color.gray)
+
+// Функция для определения цвета на основе изменения OI
+getOIColor(float change) =>
+    change > 0 ? color.green : color.red
+
+// Переменные для отслеживания времени последнего обновления
+var int lastUpdateTime = 0
+
+// Проверяем, нужно ли обновить данные
+bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
+
+// Запрос к API только при необходимости обновления
+if shouldUpdate
+    // В реальном Pine Script нельзя делать HTTP запросы напрямую
+    // Используйте webhook в TradingView Pro или импортируйте данные вручную
+    
+    // Этот код имитирует получение данных с API
+    // В реальном использовании вам нужно настроить webhook
+    
+    // Имитация полученных данных (в реальности замените на данные из webhook)
+    data15min.change := math.random(-80, 0)
+    data15min.color := getOIColor(data15min.change)
+    
+    data45min.change := math.random(-60, 0)
+    data45min.color := getOIColor(data45min.change)
+    
+    data75min.change := math.random(-50, 0)
+    data75min.color := getOIColor(data75min.change)
+    
+    data2hours.change := math.random(-40, 40)
+    data2hours.color := getOIColor(data2hours.change)
+    
+    data4hours.change := math.random(-30, 0)
+    data4hours.color := getOIColor(data4hours.change)
+    
+    // Обновляем время последнего обновления
+    lastUpdateTime := timenow
+
+// Отрисовка таблицы
+var table dataTable = table.new(position.top_right, 5, 6, border_width=1)
+
+// Обновляем заголовки таблицы
+if barstate.islast
+    table.cell(dataTable, 0, 0, "TF", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 0, "Change in price", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 2, 0, "Change in OI", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 3, 0, "Rvol", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 4, 0, "Relationship", bgcolor=color.gray, text_color=color.white)
+    
+    // Строка для 15min
+    table.cell(dataTable, 0, 1, "15min", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 1, str.tostring(0.24) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 1, str.tostring(data15min.change) + "%", bgcolor=color.black, text_color=data15min.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 1, "0.28", bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 1, "", bgcolor=color.red, text_color=color.white)
+    
+    // Строка для 45min
+    table.cell(dataTable, 0, 2, "45min", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 2, str.tostring(0.58) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 2, str.tostring(data45min.change) + "%", bgcolor=color.black, text_color=data45min.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 2, "0.7", bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 2, "", bgcolor=color.red, text_color=color.white)
+    
+    // Строка для 75min
+    table.cell(dataTable, 0, 3, "75min", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 3, str.tostring(0.61) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 3, str.tostring(data75min.change) + "%", bgcolor=color.black, text_color=data75min.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 3, "0.35", bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 3, "", bgcolor=color.red, text_color=color.white)
+    
+    // Строка для 2hours
+    table.cell(dataTable, 0, 4, "2hours", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 4, str.tostring(0.77) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 4, str.tostring(data2hours.change) + "%", bgcolor=color.black, text_color=data2hours.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 4, "0.74", bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 4, "", bgcolor=data2hours.change > 0 ? color.green : color.red, text_color=color.white)
+    
+    // Строка для 4hours
+    table.cell(dataTable, 0, 5, "4hours", bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 5, str.tostring(0.53) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 5, str.tostring(data4hours.change) + "%", bgcolor=color.black, text_color=data4hours.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 5, "0.9", bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 5, "", bgcolor=color.red, text_color=color.white)
+
+// Этот индикатор не отображает никаких линий на графике
+plot(na) 
