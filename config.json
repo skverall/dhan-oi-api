@@ -1,0 +1,12 @@
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzQzNTg4NjA2LCJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJ3ZWJob29rVXJsIjoiIiwiZGhhbkNsaWVudElkIjoiMTEwMzE5OTY0MCJ9.EHq9ZuohCkVca_Km_WLRuLrcSM4me1_w1JORVrWAjUkmKqId0EHOUKAWbvzt1CeS3zmsFr2NWRr4d6UFnBC-GA",
+  "client_id": "1103199640",
+  "auth_type": 2,
+  "tickers": [
+    {
+      "symbol": "NIFTY",
+      "exchange_segment": "NSE_FNO",
+      "security_id": 12345
+    }
+  ]
+}
