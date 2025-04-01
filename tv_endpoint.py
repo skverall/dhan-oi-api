@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from oi_cache import get_oi
+from oi_cache import get_oi, get_oi_age
 import time
 
 tv_bp = Blueprint('tv', __name__)
@@ -12,8 +12,24 @@ def tv_data():
     symbol = request.args.get("symbol", "NIFTY")
     current_oi = get_oi(symbol)
     
+    # Улучшенная обработка ошибок
     if not current_oi:
-        return jsonify({"error": "No OI data available"}), 404
+        # Проверяем возраст данных для более информативного сообщения
+        age = get_oi_age(symbol)
+        if age is not None:
+            return jsonify({
+                "error": f"OI data is stale (last update {int(age)} seconds ago)", 
+                "symbol": symbol,
+                "status": "error",
+                "error_code": "STALE_DATA"
+            }), 503  # Service Unavailable
+        else:
+            return jsonify({
+                "error": f"No OI data available for {symbol}", 
+                "symbol": symbol,
+                "status": "error",
+                "error_code": "NO_DATA"
+            }), 404  # Not Found
     
     # Получаем текущее время и используем его как временную метку
     current_time = int(time.time())
@@ -60,5 +76,7 @@ def tv_data():
     return jsonify({
         "symbol": symbol,
         "current_oi": current_oi,
-        "intervals": results
+        "intervals": results,
+        "status": "success",
+        "last_update": current_time
     }) 
