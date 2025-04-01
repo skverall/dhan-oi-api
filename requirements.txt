@@ -1,3 +1,5 @@
-flask
-websocket-client
+Flask
 gunicorn
+websocket-client
+requests
+idna

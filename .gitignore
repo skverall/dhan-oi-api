@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -14,4 +15,22 @@ ENV/
 .vscode/
 
 # Logs
+=======
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+>>>>>>> e05c2fa (Initial commit)
 *.log 
