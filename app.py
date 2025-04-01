@@ -5,7 +5,7 @@ import os
 from tv_endpoint import tv_bp
 
 app = Flask(__name__)
-app.register_blueprint(tv_bp, url_prefix='')
+app.register_blueprint(tv_bp)
 
 try:
     start_ws()
