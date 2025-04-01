@@ -1,0 +1,222 @@
+//@version=5
+indicator("NIFTY OI Changes", overlay=true)
+
+// Настройки индикатора
+var string apiUrl = input.string("https://dhan-oi-api.onrender.com/tv_data", "API URL", group="Настройки API")
+var int updateInterval = input.int(60, "Интервал обновления (сек)", minval=10, group="Настройки API")
+
+// Автоматически определяем текущий символ
+currentSymbol = syminfo.ticker
+
+// Настройки таймфреймов для отображения
+var string tf1 = input.string("15", "Таймфрейм 1 (мин)", options=["5", "15", "30", "45", "60", "75", "120", "240"], group="Таймфреймы")
+var string tf2 = input.string("45", "Таймфрейм 2 (мин)", options=["5", "15", "30", "45", "60", "75", "120", "240"], group="Таймфреймы")
+var string tf3 = input.string("75", "Таймфрейм 3 (мин)", options=["5", "15", "30", "45", "60", "75", "120", "240"], group="Таймфреймы")
+var string tf4 = input.string("120", "Таймфрейм 4 (мин)", options=["5", "15", "30", "45", "60", "75", "120", "240"], group="Таймфреймы")
+var string tf5 = input.string("240", "Таймфрейм 5 (мин)", options=["5", "15", "30", "45", "60", "75", "120", "240"], group="Таймфреймы")
+
+// Переменная для отслеживания доступности данных OI
+var bool oiDataAvailable = true
+
+// Функция для форматирования отображения таймфрейма
+formatTimeframe(tf_str) =>
+    float tfNum = str.tonumber(tf_str)
+    string formatted_tf = ""
+    if na(tfNum)
+        formatted_tf := tf_str // Возвращаем исходную строку, если конвертация не удалась
+    else if tfNum >= 60
+        float hours = tfNum / 60.0 // Используем 60.0 для деления с плавающей точкой
+        int hoursInt = int(hours)
+        if hours == hoursInt // Проверяем, целое ли число часов
+            if hoursInt == 1
+                formatted_tf := "1ч"
+            else
+                formatted_tf := str.tostring(hoursInt) + "ч"
+        else
+            formatted_tf := str.tostring(hours, "#.##") + "ч" // Форматируем float
+    else
+        int tfInt = int(tfNum)
+        if tfNum == tfInt // Проверяем, целое ли число минут
+            formatted_tf := str.tostring(tfInt) + "мин"
+        else 
+            formatted_tf := str.tostring(tfNum, "#.##") + "мин" // Форматируем float
+    formatted_tf // Возвращаем отформатированную строку
+
+// Структура для хранения данных OI
+type OIData
+    float oi
+    float change
+    color bgColor
+    float priceChange
+    float rvol
+    bool isUsingVolume
+
+// Создаем экземпляры данных для выбранных временных интервалов
+var OIData data1 = OIData.new(0.0, 0.0, color.gray, 0.0, 0.0, false)
+var OIData data2 = OIData.new(0.0, 0.0, color.gray, 0.0, 0.0, false)
+var OIData data3 = OIData.new(0.0, 0.0, color.gray, 0.0, 0.0, false)
+var OIData data4 = OIData.new(0.0, 0.0, color.gray, 0.0, 0.0, false)
+var OIData data5 = OIData.new(0.0, 0.0, color.gray, 0.0, 0.0, false)
+
+// Функция для определения цвета на основе изменения OI
+getOIColor(float change) =>
+    change > 0 ? color.green : color.red
+
+// Переменные для отслеживания времени последнего обновления
+var int lastUpdateTime = 0
+
+// Переменные для хранения данных из webhook
+var float[] tf1_data = array.new_float(3, 0.0)  // [priceChange, oiChange, rvol]
+var float[] tf2_data = array.new_float(3, 0.0)
+var float[] tf3_data = array.new_float(3, 0.0)
+var float[] tf4_data = array.new_float(3, 0.0)
+var float[] tf5_data = array.new_float(3, 0.0)
+
+// Функция для обновления данных из webhook
+updateOIData() =>
+    // В реальном использовании вам нужно настроить webhook в TradingView
+    // и передавать данные в этот индикатор
+    
+    // ИНСТРУКЦИЯ ПО НАСТРОЙКЕ:
+    // 1. Создайте webhook в TradingView по API URL (https://dhan-oi-api.onrender.com/tv_data)
+    // 2. Webhook должен вызываться с заданным интервалом (updateInterval)
+    // 3. Формат данных из webhook должен быть следующим:
+    //    {
+    //      "symbol": "NIFTY",
+    //      "data": {
+    //        "15": {"priceChange": 0.5, "oiChange": -2.3, "rvol": 0.8},
+    //        "45": {"priceChange": 0.7, "oiChange": 1.2, "rvol": 0.9},
+    //        "75": {"priceChange": 0.3, "oiChange": -1.5, "rvol": 0.5},
+    //        "120": {"priceChange": 0.8, "oiChange": 2.1, "rvol": 0.7},
+    //        "240": {"priceChange": 1.2, "oiChange": 3.5, "rvol": 1.1}
+    //      },
+    //      "oiAvailable": true
+    //    }
+    
+    // Эта функция будет вызываться через webhook
+    // Для тестирования используем временные данные
+    array.set(tf1_data, 0, 0.5)  // priceChange
+    array.set(tf1_data, 1, -2.3) // oiChange
+    array.set(tf1_data, 2, 0.8)  // rvol
+
+    array.set(tf2_data, 0, 0.7)
+    array.set(tf2_data, 1, 1.2)
+    array.set(tf2_data, 2, 0.9)
+
+    array.set(tf3_data, 0, 0.3)
+    array.set(tf3_data, 1, -1.5)
+    array.set(tf3_data, 2, 0.5)
+
+    array.set(tf4_data, 0, 0.8)
+    array.set(tf4_data, 1, 2.1)
+    array.set(tf4_data, 2, 0.7)
+
+    array.set(tf5_data, 0, 1.2)
+    array.set(tf5_data, 1, 3.5)
+    array.set(tf5_data, 2, 1.1)
+    
+    // В реальных данных это будет установлено из webhook
+    // Возвращаем значение, вместо изменения глобальной переменной
+    true
+
+// Проверяем, нужно ли обновить данные
+bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
+
+// Запрос к API только при необходимости обновления
+if shouldUpdate
+    // Обновляем oiDataAvailable с результатом функции
+    oiDataAvailable := updateOIData()
+    
+    // Обновляем структуры данных
+    data1.priceChange := array.get(tf1_data, 0)
+    data1.change := array.get(tf1_data, 1)
+    data1.rvol := array.get(tf1_data, 2)
+    data1.isUsingVolume := not oiDataAvailable
+    data1.bgColor := getOIColor(data1.change)
+    
+    data2.priceChange := array.get(tf2_data, 0)
+    data2.change := array.get(tf2_data, 1)
+    data2.rvol := array.get(tf2_data, 2)
+    data2.isUsingVolume := not oiDataAvailable
+    data2.bgColor := getOIColor(data2.change)
+    
+    data3.priceChange := array.get(tf3_data, 0)
+    data3.change := array.get(tf3_data, 1)
+    data3.rvol := array.get(tf3_data, 2)
+    data3.isUsingVolume := not oiDataAvailable
+    data3.bgColor := getOIColor(data3.change)
+    
+    data4.priceChange := array.get(tf4_data, 0)
+    data4.change := array.get(tf4_data, 1)
+    data4.rvol := array.get(tf4_data, 2)
+    data4.isUsingVolume := not oiDataAvailable
+    data4.bgColor := getOIColor(data4.change)
+    
+    data5.priceChange := array.get(tf5_data, 0)
+    data5.change := array.get(tf5_data, 1)
+    data5.rvol := array.get(tf5_data, 2)
+    data5.isUsingVolume := not oiDataAvailable
+    data5.bgColor := getOIColor(data5.change)
+    
+    // Обновляем время последнего обновления
+    lastUpdateTime := timenow
+
+// Отрисовка таблицы
+var table dataTable = table.new(position.top_right, 5, 7, border_width=1)
+
+// Обновляем заголовки таблицы
+if barstate.islast
+    // Добавляем предупреждение, если используем объем вместо OI
+    if not oiDataAvailable
+        table.cell(dataTable, 0, 0, currentSymbol, bgcolor=color.gray, text_color=color.white)
+        table.cell(dataTable, 1, 0, "⚠️ Using volume", bgcolor=color.maroon, text_color=color.white)
+        table.cell(dataTable, 2, 0, "as OI", bgcolor=color.maroon, text_color=color.white)
+        table.cell(dataTable, 3, 0, "approximation", bgcolor=color.maroon, text_color=color.white)
+        table.cell(dataTable, 4, 0, "", bgcolor=color.maroon, text_color=color.white)
+    else
+        table.cell(dataTable, 0, 0, currentSymbol, bgcolor=color.gray, text_color=color.white)
+        table.cell(dataTable, 1, 0, "Change in price", bgcolor=color.gray, text_color=color.white)
+        table.cell(dataTable, 2, 0, "Change in OI", bgcolor=color.gray, text_color=color.white)
+        table.cell(dataTable, 3, 0, "Rvol", bgcolor=color.gray, text_color=color.white)
+        table.cell(dataTable, 4, 0, "Relationship", bgcolor=color.gray, text_color=color.white)
+    
+    // Заголовок для TF в первой колонке строки 1
+    table.cell(dataTable, 0, 1, "TF", bgcolor=color.gray, text_color=color.white)
+    
+    // Строка для таймфрейма 1
+    table.cell(dataTable, 0, 2, formatTimeframe(tf1), bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 2, str.tostring(data1.priceChange) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 2, str.tostring(data1.change) + "%", bgcolor=color.black, text_color=data1.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 2, str.tostring(data1.rvol), bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 2, "", bgcolor=data1.bgColor, text_color=color.white)
+    
+    // Строка для таймфрейма 2
+    table.cell(dataTable, 0, 3, formatTimeframe(tf2), bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 3, str.tostring(data2.priceChange) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 3, str.tostring(data2.change) + "%", bgcolor=color.black, text_color=data2.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 3, str.tostring(data2.rvol), bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 3, "", bgcolor=data2.bgColor, text_color=color.white)
+    
+    // Строка для таймфрейма 3
+    table.cell(dataTable, 0, 4, formatTimeframe(tf3), bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 4, str.tostring(data3.priceChange) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 4, str.tostring(data3.change) + "%", bgcolor=color.black, text_color=data3.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 4, str.tostring(data3.rvol), bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 4, "", bgcolor=data3.bgColor, text_color=color.white)
+    
+    // Строка для таймфрейма 4
+    table.cell(dataTable, 0, 5, formatTimeframe(tf4), bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 5, str.tostring(data4.priceChange) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 5, str.tostring(data4.change) + "%", bgcolor=color.black, text_color=data4.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 5, str.tostring(data4.rvol), bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 5, "", bgcolor=data4.bgColor, text_color=color.white)
+    
+    // Строка для таймфрейма 5
+    table.cell(dataTable, 0, 6, formatTimeframe(tf5), bgcolor=color.gray, text_color=color.white)
+    table.cell(dataTable, 1, 6, str.tostring(data5.priceChange) + "%", bgcolor=color.black, text_color=color.green)
+    table.cell(dataTable, 2, 6, str.tostring(data5.change) + "%", bgcolor=color.black, text_color=data5.change > 0 ? color.green : color.red)
+    table.cell(dataTable, 3, 6, str.tostring(data5.rvol), bgcolor=color.black, text_color=color.white)
+    table.cell(dataTable, 4, 6, "", bgcolor=data5.bgColor, text_color=color.white)
+
+// Этот индикатор не отображает никаких линий на графике
+plot(na) 
