@@ -1,37 +1,37 @@
 # Dhan OI Server
 
-Сервер для отслеживания и предоставления данных по открытому интересу (Open Interest) через API Dhan.
+Server for tracking and providing Open Interest data through the Dhan API.
 
-## Установка
+## Installation
 
 ```
 pip install -r requirements.txt
 ```
 
-## Запуск локально
+## Local Launch
 
 ```
 python app.py
 ```
 
-## Настройка на Render
+## Render Setup
 
-1. Создайте новый веб-сервис
-2. Укажите следующие настройки:
+1. Create a new web service
+2. Specify the following settings:
    - Build Command: `pip install -r requirements.txt`
    - Start Command: `gunicorn app:app`
-3. Настройте переменные окружения:
-   - `DHAN_TOKEN` - токен для доступа к API Dhan
-   - `DHAN_CLIENT_ID` - идентификатор клиента Dhan
-   - `DHAN_AUTH_TYPE` - тип аутентификации (обычно 2)
-   - `DHAN_TICKERS` - список тикеров в формате `SYMBOL:EXCHANGE:SECURITY_ID,SYMBOL2:EXCHANGE2:SECURITY_ID2`
+3. Configure environment variables:
+   - `DHAN_TOKEN` - token for Dhan API access
+   - `DHAN_CLIENT_ID` - Dhan client identifier
+   - `DHAN_AUTH_TYPE` - authentication type (usually 2)
+   - `DHAN_TICKERS` - list of tickers in format `SYMBOL:EXCHANGE:SECURITY_ID,SYMBOL2:EXCHANGE2:SECURITY_ID2`
 
 ## API
 
-### Получение данных по открытому интересу
+### Getting Open Interest Data
 
 ```
 GET /get_oi?ticker=SYMBOL
 ```
 
-Возвращает текущий открытый интерес для указанного тикера. 
+Returns the current open interest for the specified ticker. 

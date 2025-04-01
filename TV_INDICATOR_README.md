@@ -1,55 +1,55 @@
-# Индикатор NIFTY OI для TradingView
+# NIFTY OI Indicator for TradingView
 
-Этот индикатор отображает данные об изменении открытого интереса (Open Interest) в различных временных интервалах для символа NIFTY.
+This indicator displays Open Interest change data across various time intervals for the NIFTY symbol. The indicator is displayed as an overlay on your chart.
 
-## Настройка
+## Setup
 
-### 1. Обновление серверной части (Render)
+### 1. Server-side Update (Render)
 
-Вы уже развернули серверную часть на Render. Убедитесь, что API доступен по адресу:
+You have already deployed the server-side on Render. Make sure the API is accessible at:
 ```
 https://dhan-oi-api.onrender.com/tv_data?symbol=NIFTY
 ```
 
-### 2. Настройка индикатора в TradingView
+### 2. Setting up the Indicator in TradingView
 
-1. Откройте TradingView и войдите в свой аккаунт
-2. Откройте график NIFTY или любого другого символа, для которого хотите использовать индикатор
-3. Нажмите "Pine Editor" в нижней части экрана
-4. Вставьте код из файла `tradingview_indicator.pine` в редактор
-5. Нажмите "Save" и дайте индикатору название, например "NIFTY OI Changes"
-6. Нажмите "Add to Chart", чтобы добавить индикатор на график
+1. Open TradingView and log into your account
+2. Open a NIFTY chart or any other symbol you want to use the indicator for
+3. Click "Pine Editor" at the bottom of the screen
+4. Paste the code from the `tradingview_indicator.pine` file into the editor
+5. Click "Save" and name the indicator, for example "NIFTY OI Changes"
+6. Click "Add to Chart" to add the indicator to your chart
 
-### 3. Ограничения и особенности работы
+### 3. Limitations and Features
 
-#### Обратите внимание:
-- TradingView не позволяет делать HTTP запросы напрямую из Pine Script
-- Для получения данных из внешних источников нужно использовать один из методов:
+#### Please note:
+- TradingView does not allow making HTTP requests directly from Pine Script
+- To get data from external sources, you need to use one of these methods:
 
-#### Вариант 1: Ручное обновление (без аккаунта TradingView Pro)
-1. Периодически проверяйте данные с API вручную
-2. Обновляйте значения в настройках индикатора
+#### Option 1: Manual Updates (without TradingView Pro account)
+1. Periodically check the data from the API manually
+2. Update the values in the indicator settings
 
-#### Вариант 2: С использованием TradingView Pro (рекомендуется)
-1. Настройте Webhook с использованием сервиса-посредника (например, Zapier, Integromat)
-2. Создайте интеграцию, которая будет получать данные с нашего API и передавать их в TradingView
-3. Обновите URL в настройках индикатора на URL вашего webhook
+#### Option 2: Using TradingView Pro (recommended)
+1. Set up a Webhook using an intermediary service (e.g., Zapier, Integromat)
+2. Create an integration that will fetch data from our API and pass it to TradingView
+3. Update the URL in the indicator settings to your webhook URL
 
-## Интерпретация данных
+## Data Interpretation
 
-Индикатор отображает таблицу с следующими данными:
-- **TF**: временной интервал (15min, 45min, 75min, 2hours, 4hours)
-- **Change in price**: изменение цены в процентах
-- **Change in OI**: изменение открытого интереса в процентах
-- **Rvol**: относительный объем
-- **Relationship**: цветовое обозначение отношения между изменением цены и OI
+The indicator displays a table with the following data:
+- **TF**: time frame (15min, 45min, 75min, 2hours, 4hours)
+- **Change in price**: price change in percentage
+- **Change in OI**: open interest change in percentage
+- **Rvol**: relative volume
+- **Relationship**: color coding of the relationship between price and OI changes
 
-### Цветовая кодировка:
-- **Зеленый**: положительное изменение OI (растущий интерес)
-- **Красный**: отрицательное изменение OI (падающий интерес)
+### Color Coding:
+- **Green**: positive OI change (increasing interest)
+- **Red**: negative OI change (decreasing interest)
 
-### Стратегия торговли:
-1. **Рост цены + рост OI (зеленый)** = сильный бычий тренд
-2. **Рост цены + падение OI (красный)** = слабый бычий тренд, возможен разворот
-3. **Падение цены + рост OI (зеленый)** = сильный медвежий тренд
-4. **Падение цены + падение OI (красный)** = слабый медвежий тренд, возможен разворот 
+### Trading Strategy:
+1. **Price increase + OI increase (green)** = strong bullish trend
+2. **Price increase + OI decrease (red)** = weak bullish trend, possible reversal
+3. **Price decrease + OI increase (green)** = strong bearish trend
+4. **Price decrease + OI decrease (red)** = weak bearish trend, possible reversal 
