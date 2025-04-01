@@ -1,24 +1,21 @@
 //@version=5
-indicator("F&O OI Changes", overlay=false, tooltip="Изменения открытого интереса для фьючерсов F&O")
-
-// Настройки индикатора
-//@version=5
-indicator("F&O OI Changes", overlay=false, tooltip="Изменения открытого интереса для фьючерсов F&O")
+indicator("F&O OI Changes", overlay=false)
 
 // Настройки индикатора
 var string apiUrl = input.string("https://dhan-oi-api.onrender.com/tv_data", "API URL", group="Настройки")
-var string symbol = input.string("NIFTY", "Символ (например: NIFTY, BANKNIFTY, RELIANCE, INFY, и т.д.)", group="Настройки")
+// Используем текущий символ графика, но позволяем переопределить его через настройки (если нужно)
+var bool useChartSymbol = input.bool(true, "Использовать символ графика", group="Настройки", tooltip="Если включено, всегда используется текущий символ графика. Если выключено, используется символ ниже.")
+var string customSymbol = input.string("NIFTY", "Символ (если не использовать символ графика)", group="Настройки", tooltip="Используется только если 'Использовать символ графика' выключено")
 var int updateInterval = input.int(60, "Интервал обновления (сек)", minval=10, group="Настройки")
 var bool showErrorLabels = input.bool(true, "Показывать сообщения об ошибках", group="Настройки")
+
+// Определяем фактически используемый символ
+string symbol = useChartSymbol ? syminfo.ticker : customSymbol
 
 // ИНСТРУКЦИЯ ДЛЯ НАСТРОЙКИ WEBHOOK
 // 1. В TradingView Pro перейдите в "Настройки" -> "Webhooks"
 // 2. Создайте webhook с URL: 
-//    https://dhan-oi-api.onrender.com/tv_data?symbol={{СИМВОЛ}}
-//    где {{СИМВОЛ}} замените на выбранный символ, например NIFTY или RELIANCE
-// 
-// Или используйте переменную из настроек индикатора:
-//    https://dhan-oi-api.onrender.com/tv_data?symbol={{plot("symbol")}}
+//    https://dhan-oi-api.onrender.com/tv_data?symbol={{ticker}}
 //
 // 3. В ответе с сервера используйте эти маппинги:
 //    api_status = $.status
@@ -53,6 +50,14 @@ getOIColor(float change) =>
 // Переменные для отслеживания времени последнего обновления
 var int lastUpdateTime = 0
 
+// Переменные для данных OI (глобальные)
+var float current_oi = na
+var float oi_15min_change = na
+var float oi_45min_change = na
+var float oi_75min_change = na
+var float oi_2hours_change = na
+var float oi_4hours_change = na
+
 // Проверяем, нужно ли обновить данные
 bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
 
@@ -60,8 +65,8 @@ bool shouldUpdate = timenow - lastUpdateTime >= updateInterval * 1000
 if shouldUpdate
     // Реальный код работы с webhook в TradingView Pro
     // URL webhook должен быть:
-    //   https://dhan-oi-api.onrender.com/tv_data?symbol=СИМВОЛ
-    //   где СИМВОЛ - это значение из настроек индикатора или конкретный символ, например NIFTY
+    //   https://dhan-oi-api.onrender.com/tv_data?symbol={{ticker}}
+    //   Индикатор автоматически использует тикер текущего графика
     //
     // Webhook вернет JSON в формате:
     // {
@@ -86,16 +91,7 @@ if shouldUpdate
     //   "error_code": "NO_DATA"
     // }
     
-    // Экспортируем значение символа для использования в webhook
-    plot(0, "symbol", display=display.none, editable=false)
-    
     // По умолчанию предполагаем, что данные отсутствуют
-    float oi_15min_change = na
-    float oi_45min_change = na
-    float oi_75min_change = na
-    float oi_2hours_change = na
-    float oi_4hours_change = na
-    float current_oi = na
     
     // В реальном сценарии здесь придут данные с webhook
     // Данные будут автоматически доступны через переменные после вызова webhook:
@@ -111,12 +107,12 @@ if shouldUpdate
     
     if api_status == "success"
         // Обновляем данные (эти переменные будут заполнены webhook'ом)
-        current_oi = 12345  // Пример значения, будет заменено реальными данными
-        oi_15min_change = -1.23  // Пример значения, будет заменено реальными данными
-        oi_45min_change = -0.89  // Пример значения, будет заменено реальными данными
-        oi_75min_change = -0.56  // Пример значения, будет заменено реальными данными
-        oi_2hours_change = 0.34  // Пример значения, будет заменено реальными данными
-        oi_4hours_change = -0.12  // Пример значения, будет заменено реальными данными
+        current_oi := 12345  // Пример значения, будет заменено реальными данными
+        oi_15min_change := -1.23  // Пример значения, будет заменено реальными данными
+        oi_45min_change := -0.89  // Пример значения, будет заменено реальными данными
+        oi_75min_change := -0.56  // Пример значения, будет заменено реальными данными
+        oi_2hours_change := 0.34  // Пример значения, будет заменено реальными данными
+        oi_4hours_change := -0.12  // Пример значения, будет заменено реальными данными
         
         // Обновляем данные и цвета
         hasError := false
