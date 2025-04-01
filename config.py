@@ -2,8 +2,20 @@ import os
 import json
 import csv
 from datetime import datetime
+import logging
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO, 
+                   format='%(asctime)s [%(levelname)s] %(message)s',
+                   datefmt='%Y-%m-%d %H:%M:%S')
 
 CSV_FILE_PATH = "api-scrip-master.csv"
+
+# Путь к конфигурационному файлу
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+
+# Путь к файлу со списком тикеров и их Security ID
+TICKER_SECURITY_ID_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Cleaned_Ticker_Security_ID_List.csv')
 
 def find_security_id_from_csv(base_symbol: str, exchange_segment: str = "NSE_FNO") -> int | None:
     """Эта функция отключена, теперь ID должны быть указаны в config.json"""
@@ -11,6 +23,93 @@ def find_security_id_from_csv(base_symbol: str, exchange_segment: str = "NSE_FNO
     return None
 
 def get_config():
+    """
+    Загружает конфигурацию из файла config.json и возвращает словарь.
+    """
+    try:
+        with open(CONFIG_FILE, 'r') as f:
+            config = json.load(f)
+        return config
+    except FileNotFoundError:
+        logging.error(f"Конфигурационный файл не найден: {CONFIG_FILE}")
+        return {}
+    except json.JSONDecodeError as e:
+        logging.error(f"Ошибка декодирования JSON: {e}")
+        return {}
+    except Exception as e:
+        logging.error(f"Неизвестная ошибка при загрузке конфигурации: {e}")
+        return {}
+
+def find_security_id(symbol):
+    """
+    Ищет Security ID для заданного символа в файле TICKER_SECURITY_ID_FILE.
+    
+    Args:
+        symbol (str): Символ тикера для поиска
+        
+    Returns:
+        str: Security ID или None, если не найден
+    """
+    try:
+        # Проверяем существование файла
+        if not os.path.exists(TICKER_SECURITY_ID_FILE):
+            logging.error(f"Файл со списком тикеров не найден: {TICKER_SECURITY_ID_FILE}")
+            return None
+        
+        # Поиск символа в файле
+        with open(TICKER_SECURITY_ID_FILE, 'r') as f:
+            reader = csv.reader(f)
+            next(reader)  # Пропускаем заголовок
+            
+            # Ищем точное соответствие символу
+            for row in reader:
+                if len(row) >= 3 and row[1].strip() == symbol:
+                    security_id = row[2].strip()
+                    logging.info(f"Найден Security ID для {symbol}: {security_id}")
+                    return security_id
+        
+        logging.warning(f"Security ID для символа {symbol} не найден")
+        return None
+    except Exception as e:
+        logging.error(f"Ошибка при поиске Security ID для {symbol}: {e}")
+        return None
+
+def update_security_ids():
+    """
+    Обновляет Security ID для всех тикеров в конфигурационном файле.
+    """
+    try:
+        # Загружаем текущую конфигурацию
+        config = get_config()
+        if not config or 'tickers' not in config:
+            logging.error("Конфигурация не содержит список тикеров")
+            return False
+        
+        # Обновляем Security ID для каждого тикера
+        updated_count = 0
+        for ticker in config['tickers']:
+            symbol = ticker.get('symbol')
+            if not symbol:
+                continue
+                
+            security_id = find_security_id(symbol)
+            if security_id:
+                old_id = ticker.get('security_id', 'None')
+                ticker['security_id'] = security_id
+                logging.info(f"Обновлен Security ID для {symbol}: {old_id} -> {security_id}")
+                updated_count += 1
+        
+        # Сохраняем обновленную конфигурацию
+        with open(CONFIG_FILE, 'w') as f:
+            json.dump(config, f, indent=2)
+        
+        logging.info(f"Обновлено {updated_count} Security ID в файле конфигурации")
+        return True
+    except Exception as e:
+        logging.error(f"Ошибка при обновлении Security ID: {e}")
+        return False
+
+def update_config():
     # Приоритет: переменные окружения > config.json
     config = {}
     

@@ -2,6 +2,9 @@ from flask import Blueprint, jsonify, request
 from oi_cache import get_oi, get_oi_age
 import time
 import logging
+import json
+import os
+from config import get_config, find_security_id
 
 # Настраиваем логирование (будет использовать конфигурацию из app.py)
 logger = logging.getLogger(__name__)
@@ -11,12 +14,65 @@ tv_bp = Blueprint('tv', __name__)
 # Словарь для хранения исторических значений OI для расчета изменений
 historical_oi = {}
 
+# Путь к конфигурационному файлу
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+
+# Кэш для хранения найденных security_id (чтобы не искать повторно)
+security_id_cache = {}
+
 @tv_bp.route("/tv_data")
 def tv_data():
     try:
         symbol = request.args.get("symbol", "NIFTY")
         logger.info(f"Запрос данных для TradingView: {symbol}")
         
+        # Проверяем наличие тикера в настройках
+        config = get_config()
+        ticker_config = next((ticker for ticker in config.get('tickers', []) 
+                        if ticker.get('symbol') == symbol), None)
+        
+        # Если тикера нет в конфигурации - автоматически находим его Security ID
+        if not ticker_config:
+            logger.info(f"Тикер {symbol} не найден в конфигурации. Выполняем автоматический поиск Security ID...")
+            
+            # Проверяем кэш сначала
+            if symbol in security_id_cache:
+                security_id = security_id_cache[symbol]
+                logger.info(f"Найден Security ID для {symbol} в кэше: {security_id}")
+            else:
+                # Ищем Security ID в файле
+                security_id = find_security_id(symbol)
+                
+                if security_id:
+                    # Сохраняем в кэш для будущих запросов
+                    security_id_cache[symbol] = security_id
+                    
+                    # Добавляем новый тикер в конфигурацию
+                    new_ticker = {
+                        "symbol": symbol,
+                        "exchange_segment": "NSE_FNO",
+                        "security_id": security_id
+                    }
+                    
+                    # Добавляем новый тикер в список
+                    config['tickers'].append(new_ticker)
+                    
+                    # Сохраняем обновленную конфигурацию
+                    try:
+                        with open(CONFIG_FILE, 'w') as f:
+                            json.dump(config, f, indent=2)
+                        logger.info(f"Конфигурация обновлена: добавлен новый тикер {symbol} с Security ID {security_id}")
+                        
+                        # Перезапускаем WebSocket для подписки на новый тикер
+                        from dhan_ws import restart_ws
+                        restart_ws()
+                        logger.info(f"WebSocket перезапущен для подписки на тикер {symbol}")
+                    except Exception as e:
+                        logger.error(f"Ошибка при сохранении конфигурации: {e}")
+                else:
+                    logger.warning(f"Security ID для тикера {symbol} не найден")
+        
+        # Получаем данные OI
         current_oi = get_oi(symbol)
         
         # Улучшенная обработка ошибок

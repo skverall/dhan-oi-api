@@ -68,8 +68,14 @@ def on_close(ws, close_status_code, close_msg):
         logging.critical(f"Достигнуто максимальное количество попыток подключения ({MAX_RECONNECT_ATTEMPTS}). Прекращаем попытки.")
 
 def on_open(ws):
-    global reconnect_attempt
+    global reconnect_attempt, config
     reconnect_attempt = 0  # Сбрасываем счетчик при успешном подключении
+    
+    # Перезагружаем конфигурацию для получения актуальных данных
+    try:
+        config = get_config()
+    except Exception as e:
+        logging.error(f"Ошибка при перезагрузке конфигурации: {e}")
     
     logging.info("WebSocket соединение установлено, подписываемся на данные...")
     
@@ -104,6 +110,31 @@ def on_open(ws):
         logging.info(f"Отправлен запрос на подписку для {len(valid_tickers)} тикеров")
     except Exception as e:
         logging.error(f"Ошибка при отправке запроса на подписку: {e}")
+
+def restart_ws():
+    """
+    Перезапускает WebSocket соединение для применения изменений в конфигурации
+    """
+    global ws_instance, config
+    
+    logging.info("Перезапуск WebSocket соединения...")
+    
+    # Обновляем конфигурацию
+    try:
+        config = get_config()
+    except Exception as e:
+        logging.error(f"Ошибка при перезагрузке конфигурации: {e}")
+    
+    # Закрываем текущее соединение, если оно есть
+    if ws_instance:
+        try:
+            ws_instance.close()
+            logging.info("Закрыто предыдущее WebSocket соединение")
+        except Exception as e:
+            logging.warning(f"Ошибка при закрытии предыдущего соединения: {e}")
+    
+    # Запускаем новое соединение
+    return start_ws()
 
 def start_ws():
     global ws_instance

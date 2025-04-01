@@ -6,12 +6,12 @@
     {
       "symbol": "NIFTY",
       "exchange_segment": "NSE_FNO",
-      "security_id": "NIFTYSEC0000"
+      "security_id": "13"
     },
     {
       "symbol": "BANKNIFTY",
       "exchange_segment": "NSE_FNO",
-      "security_id": "NIFTYSEC0001"
+      "security_id": "25"
     },
     {
       "symbol": "IDEA",
