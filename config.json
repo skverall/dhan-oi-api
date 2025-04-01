@@ -6,997 +6,742 @@
     {
       "symbol": "NIFTY",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "NIFTYSEC0000"
     },
     {
       "symbol": "BANKNIFTY",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "AARTIIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ABBOTINDIA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ACC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ADANIENT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ADANIPORTS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ALKEM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "AMBUJACEM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "APOLLOHOSP",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "APOLLOTYRE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ASHOKLEY",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ASIANPAINT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ASTRAL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "AUBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "AUROPHARMA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "AXISBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BAJAJ-AUTO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BAJAJFINSV",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BAJFINANCE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BALKRISIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BALRAMCHIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BANDHANBNK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BANKBARODA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BATAINDIA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BERGEPAINT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BHARATFORG",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BHARTIARTL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BHEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BIOCON",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BOSCHLTD",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BPCL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BRITANNIA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "BSOFT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CANBK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CANFINHOME",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CHAMBLFERT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CHOLAFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CIPLA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "COALINDIA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "COFORGE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "COLPAL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CONCOR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "COROMANDEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CROMPTON",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "CUB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DABUR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DEEPAKNTR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DELTACORP",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DIVISLAB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DIXON",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DLF",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "DRREDDY",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "EICHERMOT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ESCORTS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "EXIDEIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "FEDERALBNK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GAIL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GLENMARK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GMRINFRA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GNFC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GODREJCP",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GODREJPROP",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GRANULES",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GRASIM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "GUJGASLTD",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HAL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HAVELLS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HCLTECH",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HDFC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HDFCAMC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HDFCBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HDFCLIFE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HEROMOTOCO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HINDALCO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HINDCOPPER",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HINDPETRO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "HINDUNILVR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IBULHSGFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ICICIBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ICICIGI",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ICICIPRULI",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "NIFTYSEC0001"
     },
     {
       "symbol": "IDEA",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IDFC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IDFCFIRSTB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IEX",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IGL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INDHOTEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INDIACEM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INDIAMART",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INDIGO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INDUSINDBK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0000"
     },
     {
       "symbol": "INDUSTOWER",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0001"
     },
     {
-      "symbol": "INFY",
+      "symbol": "INDUSINDBK",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "INTELLECT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IOC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IPCALAB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "IRCTC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ITC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "JINDALSTEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "JKCEMENT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "JSWSTEEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "JUBLFOOD",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "KOTAKBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "L&TFH",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LALPATHLAB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LAURUSLABS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LICHSGFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LTIM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LTTS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "LUPIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "M&M",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "M&MFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MANAPPURAM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MARICO",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MARUTI",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MCDOWELL-N",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MCX",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "METROPOLIS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MFSL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MGL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MOTHERSON",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MRF",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "MUTHOOTFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NATIONALUM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NAUKRI",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NAVINFLUOR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NESTLEIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NMDC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "NTPC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "OBEROIRLTY",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "ONGC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PAGEIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PERSISTENT",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PETRONET",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PFC",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PIDILITIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PIIND",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PNB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "POLYCAB",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "POWERGRID",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "PVR",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "RBLBANK",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "RECLTD",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "RELIANCE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SAIL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SBICARD",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SBILIFE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SBIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SHREECEM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SHRIRAMFIN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SIEMENS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SRF",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SUNPHARMA",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SUNTV",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "SYNGENE",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATACHEM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATACOMM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATACONSUM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATAMOTORS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATAPOWER",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TATASTEEL",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TCS",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TECHM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TITAN",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TORNTPHARM",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
-    },
-    {
-      "symbol": "TORNTPOWER",
-      "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0002"
     },
     {
       "symbol": "TRENT",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0003"
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0004"
+    },
+    {
+      "symbol": "HUDCO",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0005"
+    },
+    {
+      "symbol": "BANKINDIA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0006"
+    },
+    {
+      "symbol": "IOC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0007"
+    },
+    {
+      "symbol": "YESBANK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0008"
+    },
+    {
+      "symbol": "BPCL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0009"
+    },
+    {
+      "symbol": "INDHOTEL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0010"
+    },
+    {
+      "symbol": "ASHOKLEY",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0011"
+    },
+    {
+      "symbol": "DELHIVERY",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0012"
+    },
+    {
+      "symbol": "PAYTM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0013"
+    },
+    {
+      "symbol": "BANDHANBNK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0014"
+    },
+    {
+      "symbol": "HFCL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0015"
+    },
+    {
+      "symbol": "GMRAIRPORT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0016"
+    },
+    {
+      "symbol": "IRB",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0017"
+    },
+    {
+      "symbol": "NCC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0018"
+    },
+    {
+      "symbol": "GAIL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0019"
+    },
+    {
+      "symbol": "RBLBANK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0020"
+    },
+    {
+      "symbol": "JIOFIN",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0021"
+    },
+    {
+      "symbol": "EXIDEIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0022"
+    },
+    {
+      "symbol": "SAIL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0023"
+    },
+    {
+      "symbol": "CANBK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0024"
+    },
+    {
+      "symbol": "ASTRAL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0025"
     },
     {
       "symbol": "TVSMOTOR",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0026"
     },
     {
-      "symbol": "UBL",
+      "symbol": "BAJAJ-AUTO",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0027"
     },
     {
-      "symbol": "ULTRACEMCO",
+      "symbol": "CONCOR",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0028"
     },
     {
-      "symbol": "UPL",
+      "symbol": "ICICIPRULI",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0029"
     },
     {
-      "symbol": "VEDL",
+      "symbol": "NMDC",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0030"
     },
     {
-      "symbol": "VOLTAS",
+      "symbol": "PETRONET",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0031"
     },
     {
-      "symbol": "WIPRO",
+      "symbol": "HEROMOTOCO",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0032"
     },
     {
-      "symbol": "ZEEL",
+      "symbol": "HAL",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0033"
     },
     {
-      "symbol": "ZYDUSLIFE",
+      "symbol": "HDFCLIFE",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0034"
+    },
+    {
+      "symbol": "ADANIENT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0035"
+    },
+    {
+      "symbol": "TATATECH",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0036"
+    },
+    {
+      "symbol": "TITAGARH",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0037"
     },
     {
       "symbol": "ABFRL",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0038"
     },
     {
-      "symbol": "AIAENG",
+      "symbol": "TORNTPOWER",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0039"
     },
     {
-      "symbol": "AMARAJABAT",
+      "symbol": "ZOMATO",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0040"
     },
     {
-      "symbol": "ABCAPITAL",
+      "symbol": "ONGC",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0041"
     },
     {
-      "symbol": "ATUL",
+      "symbol": "DEEPAKNTR",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0042"
     },
     {
-      "symbol": "CUMMINSIND",
+      "symbol": "PIIND",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0043"
     },
     {
-      "symbol": "DALBHARAT",
+      "symbol": "IEX",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0044"
     },
     {
-      "symbol": "DEEPAKFERT",
+      "symbol": "DRREDDY",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0045"
     },
     {
-      "symbol": "IFCI",
+      "symbol": "ACC",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0046"
     },
     {
-      "symbol": "JBCHEPHARM",
+      "symbol": "BANKBARODA",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0047"
     },
     {
-      "symbol": "LUXIND",
+      "symbol": "ANGELONE",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0048"
     },
     {
-      "symbol": "MAHABANK",
+      "symbol": "PNB",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0049"
     },
     {
-      "symbol": "MPHASIS",
+      "symbol": "HINDPETRO",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0050"
     },
     {
-      "symbol": "NAM-INDIA",
+      "symbol": "MRF",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0051"
     },
     {
-      "symbol": "OFSS",
+      "symbol": "CIPLA",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0052"
     },
     {
-      "symbol": "RAIN",
+      "symbol": "HINDCOPPER",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0053"
+    },
+    {
+      "symbol": "IRFC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0054"
+    },
+    {
+      "symbol": "IREDA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0055"
+    },
+    {
+      "symbol": "AARTIIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0056"
+    },
+    {
+      "symbol": "UNITDSPR",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0057"
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0058"
+    },
+    {
+      "symbol": "PEL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0059"
+    },
+    {
+      "symbol": "MOTHERSON",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0060"
+    },
+    {
+      "symbol": "NYKAA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0061"
+    },
+    {
+      "symbol": "ICICIGI",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0062"
+    },
+    {
+      "symbol": "SONACOMS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0063"
+    },
+    {
+      "symbol": "APLAPOLLO",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0064"
+    },
+    {
+      "symbol": "TATACOMM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0065"
+    },
+    {
+      "symbol": "BSOFT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0066"
+    },
+    {
+      "symbol": "GRASIM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0067"
+    },
+    {
+      "symbol": "WIPRO",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0068"
+    },
+    {
+      "symbol": "SBIN",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0069"
+    },
+    {
+      "symbol": "SJVN",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0070"
+    },
+    {
+      "symbol": "VBL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0071"
+    },
+    {
+      "symbol": "COALINDIA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0072"
     },
     {
       "symbol": "RAMCOCEM",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0073"
     },
     {
-      "symbol": "SHOPERSTOP",
+      "symbol": "TATAPOWER",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "FOSEC0074"
+    },
+    {
+      "symbol": "FEDERALBNK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0075"
+    },
+    {
+      "symbol": "MGL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0076"
+    },
+    {
+      "symbol": "NHPC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0077"
+    },
+    {
+      "symbol": "ABCAPITAL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0078"
+    },
+    {
+      "symbol": "BSE",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0079"
+    },
+    {
+      "symbol": "NATIONALUM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0080"
+    },
+    {
+      "symbol": "MARICO",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0081"
+    },
+    {
+      "symbol": "OIL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0082"
+    },
+    {
+      "symbol": "CESC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0083"
+    },
+    {
+      "symbol": "IRCTC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0084"
+    },
+    {
+      "symbol": "UPL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0085"
+    },
+    {
+      "symbol": "PATANJALI",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0086"
+    },
+    {
+      "symbol": "LICI",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0087"
+    },
+    {
+      "symbol": "MANAPPURAM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0088"
+    },
+    {
+      "symbol": "IIFL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0089"
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0090"
+    },
+    {
+      "symbol": "JSWSTEEL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0091"
+    },
+    {
+      "symbol": "TATAMOTORS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0092"
+    },
+    {
+      "symbol": "SBILIFE",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0093"
+    },
+    {
+      "symbol": "LICHSGFIN",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0094"
+    },
+    {
+      "symbol": "NBCC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0095"
+    },
+    {
+      "symbol": "PNBHOUSING",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0096"
+    },
+    {
+      "symbol": "POWERGRID",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0097"
+    },
+    {
+      "symbol": "ADANIENSOL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0098"
+    },
+    {
+      "symbol": "MFSL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0099"
+    },
+    {
+      "symbol": "ADANIPORTS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0100"
+    },
+    {
+      "symbol": "BHARTIARTL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0101"
+    },
+    {
+      "symbol": "CHAMBLFERT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0102"
+    },
+    {
+      "symbol": "MARUTI",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0103"
+    },
+    {
+      "symbol": "IGL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0104"
+    },
+    {
+      "symbol": "POONAWALLA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0105"
+    },
+    {
+      "symbol": "BRITANNIA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0106"
+    },
+    {
+      "symbol": "TATASTEEL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0107"
+    },
+    {
+      "symbol": "AUBANK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0108"
+    },
+    {
+      "symbol": "NESTLEIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0109"
+    },
+    {
+      "symbol": "PIDILITIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0110"
+    },
+    {
+      "symbol": "ITC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0111"
+    },
+    {
+      "symbol": "ALKEM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0112"
+    },
+    {
+      "symbol": "HDFCAMC",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0113"
+    },
+    {
+      "symbol": "EICHERMOT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0114"
+    },
+    {
+      "symbol": "SIEMENS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0115"
+    },
+    {
+      "symbol": "ESCORTS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0116"
+    },
+    {
+      "symbol": "BIOCON",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0117"
+    },
+    {
+      "symbol": "UNIONBANK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0118"
+    },
+    {
+      "symbol": "JSL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0119"
+    },
+    {
+      "symbol": "TATACONSUM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0120"
+    },
+    {
+      "symbol": "APOLLOTYRE",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0121"
+    },
+    {
+      "symbol": "HINDUNILVR",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0122"
+    },
+    {
+      "symbol": "M&M",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0123"
+    },
+    {
+      "symbol": "GRANULES",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0124"
+    },
+    {
+      "symbol": "POLYCAB",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0125"
+    },
+    {
+      "symbol": "ZYDUSLIFE",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0126"
+    },
+    {
+      "symbol": "JINDALSTEL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0127"
+    },
+    {
+      "symbol": "ASIANPAINT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0128"
+    },
+    {
+      "symbol": "ULTRACEMCO",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0129"
+    },
+    {
+      "symbol": "GODREJCP",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "FOSEC0130"
     },
     {
       "symbol": "SYMPHONY",
       "exchange_segment": "NSE_FNO",
-      "security_id": null
+      "security_id": "NIFTYSEC0371"
+    },
+    {
+      "symbol": "ATUL",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0743"
+    },
+    {
+      "symbol": "CUMMINSIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0573"
+    },
+    {
+      "symbol": "DALBHARAT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0615"
+    },
+    {
+      "symbol": "DEEPAKFERT",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0526"
+    },
+    {
+      "symbol": "GUJGASLTD",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0398"
+    },
+    {
+      "symbol": "JBCHEPHARM",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0723"
+    },
+    {
+      "symbol": "LUXIND",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0300"
+    },
+    {
+      "symbol": "MAHABANK",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0363"
+    },
+    {
+      "symbol": "MPHASIS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0620"
+    },
+    {
+      "symbol": "NAM-INDIA",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0502"
+    },
+    {
+      "symbol": "OFSS",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0687"
+    },
+    {
+      "symbol": "RAIN",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0057"
+    },
+    {
+      "symbol": "SHOPERSTOP",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0668"
+    },
+    {
+      "symbol": "IFCI",
+      "exchange_segment": "NSE_FNO",
+      "security_id": "NIFTYSEC0110"
     }
   ]
 }
