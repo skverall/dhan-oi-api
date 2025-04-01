@@ -96,7 +96,7 @@ def tv_data():
                     "symbol": symbol,
                     "status": "error",
                     "error_code": "NO_DATA"
-                }), 404  # Not Found
+                }), 200  # Изменено с 404 на 200
         
         # Получаем текущее время и используем его как временную метку
         current_time = int(time.time())
